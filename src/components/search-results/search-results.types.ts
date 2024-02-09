@@ -6,9 +6,7 @@ export interface Item {
   information: {
     hits: {
       total: number;
-      dates: {
-        [key: string]: string;
-      }
+      dates: Record<string, string>;
     };
     links: {
       self: string;
@@ -16,9 +14,7 @@ export interface Item {
     };
     bandwidth: {
       total: number;
-      dates: {
-        [key: string]: string;
-      }
+      dates: Record<string, string>;
     };
   };
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="items-table">
+  <div class="search-results">
     <v-data-table
       :loading="loading"
       :items="items"
@@ -8,7 +8,7 @@
       @update:page="$emit('change-page', $event)"
     >
       <template #item="{ item }">
-        <tr class="items-table__tr" @click="onOpenModal(item)">
+        <tr class="search-results__tr" @click="onOpenModal(item)">
           <td>{{ item.type }}</td>
           <td>{{ item.version }}</td>
         </tr>
@@ -16,11 +16,11 @@
     </v-data-table>
     <v-dialog v-model="isModalOpen" width="auto">
       <v-card>
-        <v-card-text>
-          <div>hitsTotal: {{ currentItem?.information?.hits?.total }}</div>
-          <div>bandwidthTotal: {{ currentItem?.information?.bandwidth?.total }}</div>
-          <div>self: {{ currentItem?.information?.links?.self }}</div>
-          <div>files: {{ currentItem?.information?.links?.files }}</div>
+        <v-card-text v-if="currentItem">
+          <div>hitsTotal: {{ currentItem.information.hits.total }}</div>
+          <div>bandwidthTotal: {{ currentItem.information.bandwidth.total }}</div>
+          <div>self: {{ currentItem.information.links.self }}</div>
+          <div>files: {{ currentItem.information.links.files }}</div>
         </v-card-text>
         <v-card-actions>
           <v-btn color="primary" block @click="isModalOpen = false">
@@ -33,11 +33,11 @@
 </template>
 
 <script lang="ts">
-import { props } from './items-table.types';
-import type { Item, DataTypes } from '../items-table/items-table.types';
+import { props } from './search-results.types';
+import type { Item, DataTypes } from '../search-results/search-results.types';
 
 export default {
-  name: 'ItemsTable',
+  name: 'SearchResults',
   components: {},
   props,
   data(): DataTypes {
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style>
-.items-table__tr:hover {
+.search-results__tr:hover {
   background-color: lightblue;
   cursor: pointer;
 }

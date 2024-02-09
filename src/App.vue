@@ -1,5 +1,5 @@
 <template>
-  <v-app class="kek">
+  <v-app>
     <gd-main />
   </v-app>
 </template>

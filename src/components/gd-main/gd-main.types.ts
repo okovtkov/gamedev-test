@@ -1,4 +1,4 @@
-import type { Item } from "../items-table/items-table.types";
+import type { Item } from "../search-results/search-results.types";
 
 export interface DataTypes {
   searchValue: string;

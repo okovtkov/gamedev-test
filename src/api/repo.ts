@@ -1,4 +1,4 @@
-import type { Item } from "@/components/items-table/items-table.types";
+import type { Item } from "@/components/search-results/search-results.types";
 
 export const repo = {
   async getByName(name: string, page: number): Promise<Item[]> {
